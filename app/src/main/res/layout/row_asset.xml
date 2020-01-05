@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.kuks.illustrator.utils.Constants.DRAWABLE_TYPE"/>
+
+        <variable
+            name="asset"
+            type="com.kuks.illustrator.data.Asset" />
+        <variable
+            name="onAssetClickListener"
+            type="com.kuks.illustrator.interfaces.OnAssetClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tVAssetName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Asset 1"
+            android:text='@{asset.drawable_type==DRAWABLE_TYPE.ASSET ? " (Assets file) - " + asset.name : " (Drawable file) - " + asset.name }'
+            android:onClick="@{() -> onAssetClickListener.onAssetClick(asset)}"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
